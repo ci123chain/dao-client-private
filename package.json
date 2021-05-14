@@ -105,6 +105,7 @@
     "bundlewatch": "bundlewatch",
     "start": "node scripts/start",
     "start:local": "node scripts/launch-local",
+    "start:ci123": "cross-env LOCAL_CHAIN_ID=1337 ARAGON_ENS_REGISTRY_ADDRESS=0x5f6f7e8cc7346a11ca2def8f827b7a0b612c56a1 npm run start:local",
     "start:mainnet": "cross-env ARAGON_ETH_NETWORK_TYPE=main npm start",
     "start:rinkeby": "npm start",
     "start:staging": "cross-env ARAGON_ENS_REGISTRY_ADDRESS=0xfe03625ea880a8cba336f9b5ad6e15b0a3b5a939 npm start",

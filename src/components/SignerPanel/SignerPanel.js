@@ -183,7 +183,7 @@ class SignerPanel extends React.PureComponent {
       setActivityFailed,
       setActivityNonce,
     } = this.props
-
+    console.log("ci123******begin signtrasaction")
     return new Promise((resolve, reject) => {
       walletWeb3.eth
         .sendTransaction(sanitizeTxObject(transaction))

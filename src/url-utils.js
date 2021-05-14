@@ -30,9 +30,10 @@ function contentBaseUrl(content, gateway) {
 
 export function appBaseUrl(app, gateway = ipfsDefaultConf.gateway) {
   // Support overriding app URLs, see network-config.js
-  if (appLocator[app.appId]) {
-    return appLocator[app.appId]
-  }
+  // if (appLocator[app.appId]) {
+  //   console.log("******ERROR***", app)
+  //   return appLocator[app.appId]
+  // }
 
   return contentBaseUrl(app.content, gateway)
 }

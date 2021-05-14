@@ -110,6 +110,7 @@ class App extends React.Component {
   }
 
   updateDao(orgAddress) {
+    console.log('ci123 **** updateDao:', orgAddress)
     const { clientTheme, walletAccount } = this.props
 
     // Cancel the subscriptions / unload the wrapper
@@ -185,6 +186,7 @@ class App extends React.Component {
       },
       onTransaction: transactionBag => {
         log('transaction bag', transactionBag)
+        console.trace()
         this.setState({ transactionBag })
       },
       onSignatures: signatureBag => {

@@ -25,6 +25,7 @@ function Setup({
   templates,
 }) {
   const { above } = useViewport()
+
   return (
     <React.Fragment>
       {above('large') && (

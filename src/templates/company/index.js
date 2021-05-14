@@ -99,6 +99,8 @@ export default {
     ],
   ],
   prepareTransactions(createTx, data) {
+
+    console.log("ci123************make transaction")
     const financePeriod = 0 // default
     const hasPayroll = false
 

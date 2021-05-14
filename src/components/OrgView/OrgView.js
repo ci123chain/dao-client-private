@@ -107,8 +107,10 @@ function OrgView({
   const openApp = useCallback(
     (instanceId, { instancePath } = {}) => {
       routing.update(({ mode }) => ({
-        mode: { ...mode, instanceId, instancePath },
-      }))
+          mode: { ...mode, instanceId, instancePath },
+        }
+      ))
+      console.log("****openApp****:", instanceId, instancePath)
     },
     [routing]
   )

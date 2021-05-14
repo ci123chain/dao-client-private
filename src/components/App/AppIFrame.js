@@ -93,6 +93,7 @@ class AppIFrame extends React.Component {
     this.props.onLoadingSuccess({ iframeElement: event.target })
   }
   handleReceiveMessage = event => {
+    // console.log("********AppIFrame ReceiveMsg******", event)
     const { onMessage } = this.props
     if (
       // Make sure the event actually came from the iframe window
@@ -110,6 +111,8 @@ class AppIFrame extends React.Component {
   render() {
     const { ...props } = this.props
     const show = !this.isHidden()
+
+    // console.log("********AppIFrame Render******", this.props)
 
     // Remove the props managed by AppIframe, so we can pass everything else to
     // the <iframe> element.

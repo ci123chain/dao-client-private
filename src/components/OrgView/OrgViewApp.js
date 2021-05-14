@@ -217,9 +217,7 @@ function App({
   if (!wrapper || appsLoading) {
     return null
   }
-
   const app = apps.find(app => addressesEqual(app.proxyAddress, instanceId))
-
   return app ? (
     <AppIFrame
       ref={handleAppIFrameRef}

@@ -70,6 +70,7 @@ function useConfigureState(templates, onScreenUpdate) {
 
   const updateTemplateScreen = useCallback(
     (templateId, screenIndex = 0) => {
+
       const template = getTemplateById(templates, templateId)
       setTemplate(template)
       setTemplateScreenIndex(screenIndex)
@@ -80,6 +81,7 @@ function useConfigureState(templates, onScreenUpdate) {
 
   const selectTemplate = useCallback(
     (templateId, optionalApps) => {
+
       updateTemplateScreen(templateId, 0)
       setTemplateData(data => ({
         ...data,
@@ -172,7 +174,7 @@ function useTemplateRepoInformation(templateRepoAddress) {
   ] = useState(false)
   const [templateAbi, setTemplateAbi] = useState(null)
   const [templateAddress, setTemplateAddress] = useState(null)
-
+  console.log("ci123*****Create.js useTemplateRepoInformation", templateRepoAddress)
   // Fetch latest information about the template from its aragonPM repository
   useEffect(() => {
     if (!templateRepoAddress) {
@@ -185,6 +187,7 @@ function useTemplateRepoInformation(templateRepoAddress) {
     const fetchArtifact = () => {
       fetchApmArtifact(templateRepoAddress)
         .then(templateInfo => {
+          console.log("ci123*****Create.js fetchApmArtifact", templateInfo)
           if (!cancelled) {
             setTemplateAddress(templateInfo.contractAddress)
             setTemplateAbi(templateInfo.abi)
@@ -192,7 +195,9 @@ function useTemplateRepoInformation(templateRepoAddress) {
           }
           return null
         })
-        .catch(() => {
+        .catch((msg) => {
+          console.log("ci123*****Create.js fetchApmArtifact Error", msg)
+
           // Continuously re-request until this component gets unmounted or the template changes
           if (!cancelled) {
             fetchArtifact()
@@ -229,7 +234,7 @@ function useDeploymentState(
     signing: 0,
     error: -1,
   })
-
+  
   const deployTransactions = useMemo(
     () =>
       status === STATUS_DEPLOYMENT && templateAbi && templateAddress
@@ -437,6 +442,7 @@ const Create = React.memo(function Create({
   const handleTemplatePrev = useCallback(() => prevScreen(), [prevScreen])
 
   const handleOpenNewOrg = useCallback(() => {
+    // 组织创建完成后 打开 调用
     if (templateData && templateData.domain) {
       onOpenOrg(templateData.domain)
     }

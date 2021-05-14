@@ -58,6 +58,7 @@ const prepareAppsForFrontend = (apps, daoAddress, gateway) => {
   return applyAppOverrides(apps)
     .map(app => {
       const baseUrl = appBaseUrl(app, gateway)
+
       // Remove the starting slash from the start_url field
       // so the absolute path can be resolved from baseUrl.
       const startUrl = removeStartingSlash(app['start_url'] || '')
@@ -121,6 +122,7 @@ export const fetchApmArtifact = async (
   repoAddress,
   ipfsConf = ipfsDefaultConf
 ) => {
+  console.log('begin request ipfsgate way', repoAddress, ipfsConf)
   return apm(getWeb3(web3Providers.default), {
     ipfsGateway: ipfsConf.gateway,
   }).fetchLatestRepoContent(repoAddress)
